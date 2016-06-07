@@ -1,4 +1,7 @@
+/bootstrap/compiled.php
 /vendor
+composer.phar
+composer.lock
 /node_modules
 /public/storage
 Homestead.yaml
