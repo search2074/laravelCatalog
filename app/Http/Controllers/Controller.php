@@ -11,4 +11,23 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * Алиас
+     * @var string
+     */
+    public $_valias = '';
+
+    /**
+     * Добавляет алиас, если он задан
+     * @param string $view
+     * @return string
+     */
+    public function getView($view) {
+        if($this->_valias){
+            return "{$this->_valias}.{$view}";
+        }
+
+        return $view;
+    }
 }

@@ -22,3 +22,11 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/products', 'ProductController@index');
+Route::get('/products/create', 'ProductController@create');
+Route::get('/products/edit/{id}', 'ProductController@edit');
+Route::post('/products/update/{id}', 'ProductController@update');
+Route::get('/products/delete/{id}', 'ProductController@delete');
+Route::post('/products/store', 'ProductController@store');
+Route::get('/products/show/{id}', 'ProductController@show');

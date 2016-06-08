@@ -27,6 +27,7 @@ return [
     */
 
     'debug' => env('APP_DEBUG', true),
+//    'debug' => env('APP_DEBUG'),
 
     /*
     |--------------------------------------------------------------------------
@@ -156,6 +157,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //dtbug
+        Barryvdh\Debugbar\ServiceProvider::class,
+        
+        //вспомогательные функции
+        App\Providers\HelperServiceProvider::class,
     ],
 
     /*
@@ -202,6 +208,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        //dtbug
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        
+        //помошник представлений
+        'ViewHelper' => App\Helpers\ViewHelper::class,
     ],
 
 ];
