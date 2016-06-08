@@ -7,3 +7,5 @@
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
 Тестовый вариант
+
+[Тестовый сайт доступен по ссылке](http://progerlife.ml/)
