@@ -14,7 +14,7 @@ class CreateCitiesTable extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
-			//добавим дату создания и дату редактирования
+			//добавим дату создания и изменения
             $table->timestamps();
 			$table->string('name');
         });
