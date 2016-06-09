@@ -13,11 +13,19 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <h3>Доступные товары в городе "{{ Auth::user()->city->name }}"</h3>
+    <br />
+</div>
 <div class="paginator text-center">
 	<?php echo $products->appends(['sort_by' => $sort_by, 'direction' => $direction])->render(); ?>
 </div>
 <div class="container">
     <div class="table-responsive">
+        <div class="errors">
+            <!-- Отображение ошибок проверки ввода -->
+            @include('common.errors')
+        </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>

@@ -5,10 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Controllers\Controller;
+use App\Repositories\ProductRepository;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
     public $_valias = 'products';
+
+    protected $products;
+
+    /**
+     * Конструктор
+     * @param ProductRepository $products
+     */
+    public function __construct(ProductRepository $products) {
+        //в этом контроллере есть доступ только у аутентифицированных юзеров
+        $this->middleware('auth');
+        
+        $this->products = $products;
+    }
 
     /**
      * Display a listing of the resource.
@@ -17,17 +32,22 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        // TODO: фильтрация входящих гет данных, чтобы не было sql-inj
+        //Session::flash('message', 'Это флеш сообщение'); 
+        
+        $this->validate($request, [
+            'sort_by' => 'alpha',
+            'direction' => 'alpha'
+        ], [
+            'alpha' => 'Поле :attribute должно содержать только латинские символы.',
+        ]);
+        
         $sort_by = $request->get('sort_by');
         $direction = $request->get('direction');
-
-        $products = Product::getPaginated([
-            'sort_by' => $sort_by,
-            'direction' => $direction
-        ], 100);
-
+        
+        $products = $this->products->findAllForUser($request->user(), $sort_by, $direction);
+        
         return view($this->getView('index'), [
-            'products' => $products, 
+            'products' => $products,
             'sort_by' => $sort_by, 
             'direction' => $direction
         ]);
@@ -51,7 +71,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'article' => 'required|max:255',
+            'name' => 'required|max:255',
+        ]);
+
+        $request->product()->create([
+            'article' => $request->article,
+            'name' => $request->name,
+            'created_at' => date('c'),
+            'updated_at' => date('c')
+        ]);
+
+        return redirect('/tasks');
     }
 
     /**
@@ -60,9 +92,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, Product $product)
     {
-        $product = Product::find($id);
+        $this->authorize('show', $product);
+
+//        $product = Product::find($id);
 
         return view($this->getView('show'), ['product' => $product]);
     }

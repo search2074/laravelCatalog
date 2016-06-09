@@ -23,4 +23,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    /**
+     * Город, который выбрал юзер
+     * @return App\City
+     */
+    public function city() {
+        // юзер принадлежит к городу
+        return $this->belongsTo('App\City', 'id_city');
+    }
 }

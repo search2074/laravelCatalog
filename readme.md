@@ -9,3 +9,8 @@
 Тестовый вариант
 
 [Тестовый сайт доступен по ссылке](http://progerlife.ml/)
+
+Список email/паролей для авторизации:
+john@progerlife.ml:123321
+admin@progerlife.ml:123321
+guest@mail.ru:123321

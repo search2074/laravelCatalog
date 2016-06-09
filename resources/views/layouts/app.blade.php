@@ -47,8 +47,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Cabinet</a></li>
-                    <li><a href="{{ url('/products') }}">Каталог товаров</a></li>
+                    <li><a href="{{ url('/home') }}">Dashboard</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -58,12 +57,14 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
+                        <li><a href="#">Ваш город: <span class="text-danger">{{ Auth::user()->city->name }}</span></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/products') }}"><i class="fa fa-btn fa-suitcase"></i>Доступные товары</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -72,6 +73,12 @@
             </div>
         </div>
     </nav>
+    
+    <div class="flash-messages container">
+        @if(Session::has('message'))
+        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+        @endif
+    </div>
 
     @yield('content')
 

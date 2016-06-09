@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+use Illuminate\Support\Facades\Session;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -45,6 +47,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        if($e instanceof AuthorizationException){
+            Session::flash('message', 'Нет доступа');
+            return response()->view('errors.auth', [], 403);
+        }
+        
         return parent::render($request, $e);
     }
 }
