@@ -30,3 +30,6 @@ Route::post('/products/update/{id}', 'ProductController@update');
 Route::get('/products/delete/{id}', 'ProductController@delete');
 Route::post('/products/store', 'ProductController@store');
 Route::get('/products/show/{product}', 'ProductController@show');
+
+
+Route::post('/lists/products', 'ListController@products');

@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Добро пожаловать в <a href="{{ url('/products') }}">каталог товаров</a>.
+                    
                 </div>
             </div>
         </div>

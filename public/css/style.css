@@ -1,0 +1,19 @@
+body {
+    font-family: 'Lato';
+}
+
+.fa-btn {
+    margin-right: 6px;
+}
+.id-column {
+    min-width: 75px;
+}
+.article-column {
+    min-width: 115px;
+}
+.dt-column {
+    min-width: 160px;
+}
+.checked-cell {
+    background-color: #c6ffc5;
+}

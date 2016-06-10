@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    Добро пожаловать в <a href="{{ url('/products') }}">каталог товаров</a>.
                 </div>
             </div>
         </div>

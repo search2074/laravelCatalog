@@ -26,29 +26,46 @@
             <!-- Отображение ошибок проверки ввода -->
             @include('common.errors')
         </div>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th class="id-column"><?= ViewHelper::renderSortColumn('id', 'ID') ?></th>
-                    <th class="article-column"><?= ViewHelper::renderSortColumn('article', 'Артикул') ?></th>
-                    <th><?= ViewHelper::renderSortColumn('name', 'Название товара') ?></th>
-                    <th class="dt-column"><?= ViewHelper::renderSortColumn('created_at', 'Дата создания') ?></th>
-                    <th class="dt-column"><?= ViewHelper::renderSortColumn('updated_at', 'Дата изменения') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($products as $product)
-                    <?php /*<li><a href="/show/{{$product->id}}">{{$product->name}}</a></li>*/ ?>
+        <form action="/lists/products" method="POST">
+            {{ csrf_field() }}
+            <table class="table table-striped table-hover products-list">
+                <thead>
                     <tr>
-                        <td>{{$product->id}}</td>
-                        <td>{{$product->article}}</td>
-                        <td><a href="/products/show/{{$product->id}}">{{$product->name}}</a></td>
-                        <td>{{$product->created_at}}</td>
-                        <td>{{$product->updated_at}}</td>
+                        <th>&nbsp;</th>
+                        <th class="id-column check-column" data-column="id">
+                            <?= ViewHelper::renderSortColumn('id', 'ID') ?>
+                        </th>
+                        <th class="article-column check-column" data-column="article">
+                            <?= ViewHelper::renderSortColumn('article', 'Артикул') ?>
+                        </th>
+                        <th class="check-column" data-column="name">
+                            <?= ViewHelper::renderSortColumn('name', 'Название товара') ?>
+                        </th>
+                        <th class="dt-column check-column" data-column="created_at">
+                            <?= ViewHelper::renderSortColumn('created_at', 'Дата создания') ?>
+                        </th>
+                        <th class="dt-column check-column" data-column="updated_at">
+                            <?= ViewHelper::renderSortColumn('updated_at', 'Дата изменения') ?>
+                        </th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach($products as $product)
+                        <?php /*<li><a href="/show/{{$product->id}}">{{$product->name}}</a></li>*/ ?>
+                        <tr>
+                            <td><span><input class="check-row" type="checkbox" name="Products[]" value="{{$product->id}}" /></span></td>
+                            <td>{{$product->id}}</td>
+                            <td class="checked-cell">{{$product->article}}</td>
+                            <td class="checked-cell"><a href="/products/show/{{$product->id}}">{{$product->name}}</a></td>
+                            <td>{{$product->created_at}}</td>
+                            <td>{{$product->updated_at}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <input type="hidden" name="select_fields" value="article,name" />
+            <input type="submit" value="Сформировать список для рассылки" />
+        </form>
     </div>
 </div>
 <div class="paginator text-center">
@@ -56,15 +73,3 @@
 </div>
 
 @endsection
-
-<style>
-    .id-column {
-        min-width: 75px;
-    }
-    .article-column {
-        min-width: 115px;
-    }
-    .dt-column {
-        min-width: 160px;
-    }
-</style>
