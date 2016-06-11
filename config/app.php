@@ -157,11 +157,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        //dtbug
+        //debug
         Barryvdh\Debugbar\ServiceProvider::class,
         
         //вспомогательные функции
         App\Providers\HelperServiceProvider::class,
+		//формы и хелперы
+		Collective\Html\HtmlServiceProvider::class,
     ],
 
     /*
@@ -213,6 +215,12 @@ return [
         
         //помошник представлений
         'ViewHelper' => App\Helpers\ViewHelper::class,
+		//формы и хелперы
+		'Form' => Collective\Html\FormFacade::class,
+		'Html' => Collective\Html\HtmlFacade::class,
+		
+		//файловый помошник
+        'FileHelper' => App\Helpers\FileHelper::class,
     ],
 
 ];

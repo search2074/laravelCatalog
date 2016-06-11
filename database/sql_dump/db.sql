@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Июн 09 2016 г., 21:04
+-- Время создания: Июн 11 2016 г., 08:44
 -- Версия сервера: 5.5.41-cll-lve
 -- Версия PHP: 5.6.22
 
@@ -2155,8 +2155,8 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `id_city`) VALUES
-(1, 'John', 'john@progerlife.ml', '$2y$10$3MSx8UvKxsnkGpvEB4uBzO/ITeS/Zv4TSiJd5dbVmW/BXgnAAEyeu', 'OpUEw9e6eilYnR1fD1vn8zrvy0xQBA68MBqYgzTTdaR16raZClckdO2Gy7aq', '2016-06-07 20:58:22', '2016-06-09 13:55:04', 1),
-(2, 'admin', 'admin@progerlife.ml', '$2y$10$6dJdHZWpSO2/XtVcXrv.7.N2cc8cpzju1twsqDowO/IJ2veL1w0Xm', 'U5UHqNMcG9vWQsBCZIKU1NbSgqK7wFpq0LwT55lmsv239al1iU6roW74ZUrw', '2016-06-07 22:02:42', '2016-06-09 13:55:43', 2),
+(1, 'John', 'john@progerlife.ml', '$2y$10$3MSx8UvKxsnkGpvEB4uBzO/ITeS/Zv4TSiJd5dbVmW/BXgnAAEyeu', 'peiE71Dw3pDEa3eFfdEWoEcyrvbIbhp219QZofQr0vaRRmbLqMs92l2lV3EO', '2016-06-07 20:58:22', '2016-06-10 08:48:40', 1),
+(2, 'admin', 'admin@progerlife.ml', '$2y$10$6dJdHZWpSO2/XtVcXrv.7.N2cc8cpzju1twsqDowO/IJ2veL1w0Xm', '9VZcmvyJUB8yv0wHWtKXJUiYqj0oQty8z6Nd4siJYPmk3lzgkufW1jUr4QFv', '2016-06-07 22:02:42', '2016-06-10 08:09:29', 2),
 (3, 'guest', 'guest@mail.ru', '$2y$10$0HKBB7w3.ml17in0c1pcuuPjiZttCoQgBp4AL0YaB/Ruj/MMinTwi', 'cMwRLPrNhftsFzf22jDncpDtlWUBSEzhWqVh69jrigRUq2GuPgjBvFXap52Q', '2016-06-07 22:03:15', '2016-06-07 22:03:18', 3);
 
 --

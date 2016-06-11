@@ -11,15 +11,21 @@ jQuery(function($){
             //удалим
             fields.splice(i, 1);
         } else {
-            //иначе добавим
-            fields.push(field);
+            //если главное поле id
+            if(field==='id'){
+                fields.unshift(field);
+            } else {
+                //иначе добавим в конец
+                fields.push(field);
+            }
         }
 
 		var table = $(this).parents('table'),
             rows = table.find('tbody tr'),
-        //номер столбца
+            //номер столбца
             cell_index = this.cellIndex,
             field = $(this).data('column');
+            
         rows.each(function(){
             var td = $(this).find('td').eq(cell_index);
             td.toggleClass('checked-cell');
@@ -28,7 +34,7 @@ jQuery(function($){
         select_field.val(fields.join(','));
     });
 
-    $('body').on('click', '.products-list tbody tr td:gt(0)', function(){
+    $('body').on('click', '.products-list tbody tr td:not(.actions)', function(){
         var checkbox = $(this).parents('tr').find('.check-row');
         
         checkbox.prop("checked", function(i, val){

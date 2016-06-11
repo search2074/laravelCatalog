@@ -26,34 +26,33 @@
             <!-- Отображение ошибок проверки ввода -->
             @include('common.errors')
         </div>
-        <form action="/lists/products" method="POST">
+        <form action="/products/generatelist" method="POST">
             {{ csrf_field() }}
             <table class="table table-striped table-hover products-list">
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th class="id-column check-column" data-column="id">
+                        <th class="id-column check-column" data-column="id" title="Кликните для выделения столбца">
                             <?= ViewHelper::renderSortColumn('id', 'ID') ?>
                         </th>
-                        <th class="article-column check-column" data-column="article">
+                        <th class="article-column check-column" data-column="article" title="Кликните для выделения столбца">
                             <?= ViewHelper::renderSortColumn('article', 'Артикул') ?>
                         </th>
-                        <th class="check-column" data-column="name">
+                        <th class="check-column" data-column="name" title="Кликните для выделения столбца">
                             <?= ViewHelper::renderSortColumn('name', 'Название товара') ?>
                         </th>
-                        <th class="dt-column check-column" data-column="created_at">
+                        <th class="dt-column check-column" data-column="created_at" title="Кликните для выделения столбца">
                             <?= ViewHelper::renderSortColumn('created_at', 'Дата создания') ?>
                         </th>
-                        <th class="dt-column check-column" data-column="updated_at">
+                        <th class="dt-column check-column" data-column="updated_at" title="Кликните для выделения столбца">
                             <?= ViewHelper::renderSortColumn('updated_at', 'Дата изменения') ?>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($products as $product)
-                        <?php /*<li><a href="/show/{{$product->id}}">{{$product->name}}</a></li>*/ ?>
                         <tr>
-                            <td><span><input class="check-row" type="checkbox" name="Products[]" value="{{$product->id}}" /></span></td>
+                            <td class="actions"><span><input class="check-row" type="checkbox" name="Products[]" value="{{$product->id}}" /></span></td>
                             <td>{{$product->id}}</td>
                             <td class="checked-cell">{{$product->article}}</td>
                             <td class="checked-cell"><a href="/products/show/{{$product->id}}">{{$product->name}}</a></td>

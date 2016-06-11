@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Product;
 use App\User;
-use App\City;
 
 /**
  * Description of ProductRepository
@@ -45,5 +44,18 @@ class ProductRepository {
         }
         
         return $products->paginate($c);
+    }
+    
+    /**
+     * Получить товары по списку id_products из доступных у юзера
+     * @param User $user
+     * @param type $id_products
+     * @return type
+     */
+    public function findByIDs(User $user, $id_products){
+        $products = $user->city->products();
+        // TODO: сделать фильтрацию $id_products от sql-inj
+        
+        return $products->whereIn('products.id', $id_products)->get();
     }
 }

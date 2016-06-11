@@ -134,5 +134,12 @@ class ProductController extends Controller
     {
         //
     }
+	
+	public function generateList(Request $request) {
+		$request->session()->put('id_products', $request->get('Products'));
+		$request->session()->put('select_fields', $request->get('select_fields'));
+
+		return redirect()->to('/lists/products');
+	}
 
 }

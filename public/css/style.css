@@ -1,7 +1,6 @@
 body {
     font-family: 'Lato';
 }
-
 .fa-btn {
     margin-right: 6px;
 }
@@ -14,6 +13,9 @@ body {
 .dt-column {
     min-width: 160px;
 }
-.checked-cell {
+.products-list .checked-cell {
     background-color: #c6ffc5;
+}
+.products-list .check-column {
+	cursor: pointer;
 }
