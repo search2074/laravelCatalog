@@ -27,7 +27,7 @@
             @include('products.table')
             
 			<div>
-				<label for="providers-list">Получатель</label>
+				<label for="providers-list">Получатель <span class="text-danger">*</span></label>
 				<br />
 				<?=	Form::select('providerslist[]', $providers, NULL, ['id'=>'providers-list', 'multiple'=>'multiple']); ?>
 			</div>

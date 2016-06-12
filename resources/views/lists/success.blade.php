@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">Сообщение отправлено</div>
+<div class="container">Сообщение отправлено.</div>
 @endsection

@@ -52,11 +52,17 @@ class ListController extends Controller {
     public function send(Request $request){
 		$this->validate($request, [
 			'file' => ['mimes:jpg,jpeg,png', 'min:100', 'max:10000'],
+			'providerslist' => 'required|array',
 		], [
 			'mimes' => 'Недопустимый тип файла, разрешены только jpg, jpeg, png',
 			'min' => 'Минимальный размер файла 100 килобайт',
 			'max' => 'Максимальный размер файла 10 мегабайт',
+//			'required' => 'Поле :attribute объязательно для заполнения',
+			'providerslist.required' => 'Поле Получатель объязательно для заполнения',
+			'providerslist.array' => 'Не выбран получатель'
 		]);
+		
+//		SelectValidator::make($request->get('providerslist'), []);
 		
 		$emails = Provider::whereIn('providers.id', $request->get('providerslist'))->get()->toArray();
 		$file = \App\Helpers\FileHelper::upload($request);
@@ -81,7 +87,9 @@ class ListController extends Controller {
 				$m->to($value['email'], $value['email'])->subject('Список товаров');
 			}
 			
-			$m->attach($file);
+			if($file){
+				$m->attach($file);
+			}
 		});
 	}
 }

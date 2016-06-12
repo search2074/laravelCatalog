@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Июн 11 2016 г., 08:44
+-- Время создания: Июн 12 2016 г., 11:11
 -- Версия сервера: 5.5.41-cll-lve
 -- Версия PHP: 5.6.22
 
@@ -1091,7 +1091,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_06_07_173444_create_cities_table', 1),
 ('2016_06_07_183455_create_products_table', 1),
 ('2016_06_09_075251_add_city_id_to_users', 1),
-('2016_06_08_034748_create_availability_product_table', 2);
+('2016_06_08_034748_create_availability_product_table', 2),
+('2016_06_11_054307_create_providers_table', 3);
 
 -- --------------------------------------------------------
 
@@ -2129,6 +2130,26 @@ INSERT INTO `products` (`id`, `name`, `article`, `created_at`, `updated_at`) VAL
 (998, 'Фотоаппарат цифровой Samsung WB100 Red', 'Z00053839', '2013-04-10 12:44:04', '2013-04-11 05:35:05'),
 (999, 'Фотоаппарат цифровой Samsung WB200F Black', 'Z00053840', '2013-04-10 12:44:35', '2014-04-01 13:14:26'),
 (1000, 'Фотоаппарат цифровой Samsung WB200F Red', 'Z00053841', '2013-04-10 12:44:42', '2013-04-11 06:27:49');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `providers`
+--
+
+CREATE TABLE IF NOT EXISTS `providers` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `providers`
+--
+
+INSERT INTO `providers` (`id`, `email`) VALUES
+(1, 'debug01@yandex.ru'),
+(2, 'chelbmk@mail.ru');
 
 -- --------------------------------------------------------
 
